@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebais</title>
+</head>
+<body>
+    <br/>
+    <table>
+        <thead>
+            <tr>
+                
+                <td>ID</td>
+                <td>NOMBRE</td>
+                <td>UBICACION</td>
+                <td>CAPACIDAD</td>
+
+            </tr>
+        </thead>
+        <tbody>
+                {% for ebais in ebais %}
+                <tr>
+                    <td>{{ebais.id}}</td>
+                    <td>{{ebais.nombreEbais}}</td>
+                    <td>{{ebais.ubicacionEbais}}</td>
+                    <td>{{ebais.capacidadEbais}}</td>
+    
+                {% endfor %}
+                </tr>   
+
+                
+            
+        </tbody>
+    </table>
+
+    <br></br>
+    ID: <input type="text" id="txtCodigo" name="fname"><br></br>
+ 
+    <br/>
+    <button><a href="{%url 'crearEbais' %}">Nueva Ebais</a></button>
+    <button id="consultaEliminar"> Eliminar Ebais</button> 
+    <button id="consultaActualizar"> Editar Ebais</button> 
+
+    <button><a href="{%url 'index' %}">Volver</a></button>
+
+
+</body>
+</html>
+
+
+<script>
+
+    document.getElementById("consultaActualizar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/editarEbais"+"/"+eleccion.value;
+        }
+
+    });
+    document.getElementById("consultaEliminar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/borrarEbais"+"/"+eleccion.value;
+        }
+
+    });
+
+   
+</script>

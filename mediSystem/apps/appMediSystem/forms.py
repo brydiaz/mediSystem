@@ -2,6 +2,7 @@ from django import forms
 from .models import *
 import datetime
 
+
 class PacienteForm(forms.ModelForm):
 
     class Meta:
@@ -96,5 +97,35 @@ class DoctorForm(forms.ModelForm):
             'especialidadDoctor': forms.TextInput(attrs={'class':'form-control'}),
             'nombreDoctor': forms.TextInput(attrs={'class':'form-control'}),
             'citasPorDoctor': forms.CheckboxSelectMultiple()
+
+        }
+
+
+class EbaisForm(forms.ModelForm):
+
+    class Meta:
+        model = Ebais  
+        fields = {
+            'id',
+            'nombreEbais',
+            'ubicacionEbais',
+            'capacidadEbais'
+        } 
+
+        labels = {
+
+            'id':'ID',
+            'nombreEbais':'Nombre',
+            'ubicacionEbais':'Ubicación',
+            'capacidadEbais':'Capacidad de Personas'
+
+        }
+
+        widgets = {
+
+            'id': forms.TextInput(attrs={'class':'form-control'}) ,
+            'nombreEbais': forms.TextInput(attrs={'class':'form-control'}),
+            'ubicacionEbais': forms.TextInput(attrs={'class':'form-control'}),
+            'capacidadEbais': forms.TextInput(attrs={'class':'form-control'}),
 
         }

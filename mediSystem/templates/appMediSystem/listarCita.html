@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citas</title>
+</head>
+<body>
+    <br/>
+    <table>
+        <thead>
+            <tr>
+                
+                <td>ID</td>
+                <td>FECHA</td>
+                <td>MOTIVO</td>
+                <td>PACIENTE</td>
+
+            </tr>
+        </thead>
+        <tbody>
+                {% for cita in cita %}
+                <tr>
+                    <td>{{cita.idCita}}</td>
+                    <td>{{cita.fechaCita}}</td>
+                    <td>{{cita.motivoCita}}</td>
+                    <td>{{cita.pacienteFK}}</td>
+    
+                {% endfor %}
+                </tr>   
+
+                
+            
+        </tbody>
+    </table>
+
+    <br></br>
+    ID: <input type="text" id="txtCodigo" name="fname"><br></br>
+ 
+    <br/>
+    <button><a href="{%url 'crearCita' %}">Nueva Cita</a></button>
+    <button id="consultaEliminar"> Eliminar cita</button> 
+    <button id="consultaActualizar"> Editar cita</button> 
+    <button id="asignarDoctor"> Asignar Doctor </button> 
+    <button><a href="{%url 'index' %}">Volver</a></button>
+
+
+</body>
+</html>
+
+
+<script>
+
+    document.getElementById("consultaActualizar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/editarCita"+"/"+eleccion.value;
+        }
+
+    });
+    document.getElementById("consultaEliminar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/borrarCita"+"/"+eleccion.value;
+        }
+
+    });
+
+    document.getElementById("asignarDoctor").addEventListener("click", function(){
+        
+        location.href = "http://127.0.0.1:8000/appMediSystem/listarDoctor";
+    
+
+});
+</script>

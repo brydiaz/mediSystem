@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                
+                <td>ID</td>
+                <td>PESO</td>
+                <td>GENERO</td>
+                <td>NOMBRE</td>
+                <td>TIPO DE SANGRE</td>
+                <td>CEDULA</td>
+                <td>EDAD</td>
+                <td>ALTURA</td>
+            </tr>
+        </thead>
+        <tbody>
+                {% for paciente in paciente %}
+                <tr>
+                    <td>{{paciente.idPaciente}}</td>
+                    <td>{{paciente.pesoPaciente}}</td>
+                    <td>{{paciente.generoPaciente}}</td>
+                    <td>{{paciente.nombrePaciente}}</td>
+                    <td>{{paciente.tipoDeSangrePaciente}}</td>
+                    <td>{{paciente.cedulaPaciente}}</td>
+                    <td>{{paciente.edadPaciente}}</td>
+                    <td>{{paciente.alturaPaciente}}</td>
+                {% endfor %}
+                </tr>   
+            
+        </tbody>
+    </table>
+
+    <br></br>
+    ID: <input type="text" id="txtCodigo" name="fname"><br></br>
+ 
+    <br/>
+    <button><a href="{%url 'crearPaciente' %}">Nuevo Paciente</a></button>
+    <button id="consultaEliminar"> Eliminar Paciente</button> 
+    <button id="consultaActualizar"> Editar Paciente</button> 
+    <button id="crearCita"> Nueva Cita</button> 
+    <button><a href="{%url 'index' %}">Volver</a></button>
+
+
+</body>
+</html>
+
+<script>
+
+    document.getElementById("consultaActualizar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/editarPaciente"+"/"+eleccion.value;
+        }
+
+    });
+    document.getElementById("consultaEliminar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/borrarPaciente"+"/"+eleccion.value;
+        }
+
+    });
+
+    document.getElementById("crearCita").addEventListener("click", function(){
+        
+            location.href = "http://127.0.0.1:8000/appMediSystem/listarCita";
+        
+
+    });
+</script>

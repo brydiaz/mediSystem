@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctores</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                
+                <td>ID</td>
+                <td>ESPECIALIDAD</td>
+                <td>NOMBRE</td>
+
+  
+            </tr>
+        </thead>
+        <tbody>
+                {% for doctor in doctor %}
+                <tr>
+                    <td>{{doctor.idDoctor}}</td>
+                    <td>{{doctor.especialidadDoctor}}</td>
+                    <td>{{doctor.nombreDoctor}}</td>
+                    
+                   
+                {% endfor %}
+                </tr>   
+            
+        </tbody>
+    </table>
+
+    <br></br>
+    ID: <input type="text" id="txtCodigo" name="fname"><br></br>
+ 
+    <br/>
+    <button><a href="{%url 'crearDoctor' %}">Nuevo Doctor</a></button>
+    <button id="consultaEliminar"> Eliminar Doctor</button> 
+    <button id="consultaActualizar"> Editar Doctor</button> 
+    <button id="consultaCitas"> Ver Citas Asociadas al  doctor</button> 
+    <button><a href="{%url 'index' %}">Volver</a></button>
+
+
+</body>
+</html>
+
+<script>
+
+    document.getElementById("consultaActualizar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/editarDoctor"+"/"+eleccion.value;
+        }
+
+    });
+    document.getElementById("consultaEliminar").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/borrarDoctor"+"/"+eleccion.value;
+        }
+
+    });
+
+
+    document.getElementById("consultaCitas").addEventListener("click", function(){
+        var eleccion = document.getElementById("txtCodigo");
+        if(eleccion.value==""){
+            alert("No has introducido un id valido");
+
+        }else{
+            location.href = "http://127.0.0.1:8000/appMediSystem/consultaCitasDoctor"+"/"+eleccion.value;
+        }
+
+    });
+</script>
