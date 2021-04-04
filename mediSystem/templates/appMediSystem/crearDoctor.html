@@ -1,21 +1,113 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Doctor</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>MediSystem</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/simple-sidebar.css' %}" rel="stylesheet">
+
 </head>
+
 <body>
-    <form action="" method="POST">
 
-        {%csrf_token%}
-        {{form.as_p}}
-        <button type="submit">OK</button>
+  <div class="d-flex" id="wrapper">
 
-        <button><a href="{%url 'listarDoctor' %}">Volver</a></button>
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">MediSystem </div>
+      <div class="list-group list-group-flush">
 
-    </form>
+        <a href="{%url 'listarPaciente' %}" class="list-group-item list-group-item-action bg-light">PACIENTES</a>
+        <a href="{%url 'listarCita' %}" class="list-group-item list-group-item-action bg-light">CITAS</a>
+        <a href="{%url 'listarDoctor' %}" class="list-group-item list-group-item-action bg-light">MEDICOS</a>
+        <a href="{%url 'listarEbais' %}" class="list-group-item list-group-item-action bg-light">EBAIS</a>
+
+        <a href="{%url 'desarrolladores' %}" class="list-group-item list-group-item-action bg-light">DESARROLLADORES</a>
+
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Mostrar/Esconder</button>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" href="{%url 'index'%}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Referencias
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="https://www.djangoproject.com/">Django</a>
+                <a class="dropdown-item" href="https://getbootstrap.com/">Bootstrap</a>
+                <a class="dropdown-item" href="https://www.oracle.com/es/database/">Oracle</a>
+                <a class="dropdown-item" href="https://www.mongodb.com/es">Mongo</a>
+                <a class="dropdown-item" href="https://www.python.org/downloads/">Python</a>
+                
+                
+                
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <h1 class="mt-4">DOCTOR</h1>
+        
+        <form action="" method="POST">
+
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type="submit">OK</button>
+    
+            <button><a href="{%url 'listarDoctor' %}">Volver</a></button>
+    
+        </form>
+
+      </div>
+      <img src="{% static 'images/oracle.jpg' %}" class="u-logo-image u-logo-image-1" width="300" height="200" >
+
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Menu Toggle Script -->
+  <script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
+  </script>
 
 </body>
+
 </html>

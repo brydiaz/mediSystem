@@ -108,7 +108,7 @@ def borrarDoctor(request, id):
     if request.method == 'POST':
         doctor.delete()
         return redirect('index')
-    return render(request, 'appMediSystem/borrarDoctor.html', {'Doctor':Doctor})  
+    return render(request, 'appMediSystem/borrarDoctor.html', {'Doctor':doctor})  
 
 def listarCitasDoctor(request, id):
     citasDoctor = Doctor.objects.get(idDoctor = id)
@@ -153,3 +153,7 @@ def editarEbais(request, id):
             selectedObject.save(using='mongo')
         return redirect('listarEbais')
     return render(request, 'appMediSystem/crearEbais.html', {'form':form})
+
+
+def desarrolladores(request):
+    return render(request, 'appMediSystem/desarrolladores.html')

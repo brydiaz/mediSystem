@@ -23,4 +23,7 @@ urlpatterns=[
     url(r'^listarEbais/', listarEbais, name= 'listarEbais'),  
     url(r'^borrarEbais/(?P<id>\d+)/$', borrarEbais, name= 'borrarEbais'), 
     url(r'^editarEbais/(?P<id>\d+)/$', editarEbais, name= 'editarEbais'), 
+
+    url(r'^desarrolladores/', desarrolladores, name= 'desarrolladores'),  
+
 ]
